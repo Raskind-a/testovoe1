@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Event extends Model
 {
+
+
+    protected $fillable = [
+      'title', 'text'
+    ];
     // relations
 
     public function creator(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function participants(): BelongsToMany
